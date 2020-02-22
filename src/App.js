@@ -16,7 +16,8 @@ class App extends React.Component {
       { task: "alpha", complete: false },
       { task: "beta", complete: false },
       { task: "gamma", complete: false }
-    ]
+    ],
+    todoToAdd: ""
   };
 
   deleteTodo = index => {
@@ -31,6 +32,14 @@ class App extends React.Component {
     newTodo.complete = !newTodo.complete;
     newTodos[index] = newTodo;
     this.setState({ todos: newTodos });
+  };
+
+  addTodo = todo => {
+    if (todo === "") return;
+    this.setState({
+      todos: [...this.state.todos, { task: todo, complete: false }]
+    });
+    this.setState({ todoToAdd: "" });
   };
 
   render() {
@@ -53,6 +62,22 @@ class App extends React.Component {
             );
           })}
         </ul>
+        <div>
+          <label>Add a new to-do item:</label>
+          <input
+            type="text"
+            value={this.state.todoToAdd}
+            onChange={e => {
+              this.setState({ todoToAdd: e.target.value });
+            }}
+          />
+          <button
+            type="button"
+            onClick={() => this.addTodo(this.state.todoToAdd)}
+          >
+            Add
+          </button>
+        </div>
       </MainBody>
     );
   }
