@@ -8,12 +8,24 @@ const MainBody = styled.div`
 
 class App extends React.Component {
   state = {
-    todos: ["alpha", "beta", "gamma"]
+    todos: [
+      { task: "alpha", complete: false },
+      { task: "beta", complete: false },
+      { task: "gamma", complete: false }
+    ]
   };
 
   deleteTodo = index => {
     let newTodos = [...this.state.todos];
     newTodos.splice(index, 1);
+    this.setState({ todos: newTodos });
+  };
+
+  completeTodo = index => {
+    let newTodos = [...this.state.todos];
+    let newTodo = this.state.todos[index];
+    newTodo.complete = !newTodo.complete;
+    newTodos[index] = newTodo;
     this.setState({ todos: newTodos });
   };
 
@@ -25,9 +37,13 @@ class App extends React.Component {
           {this.state.todos.map((item, index) => {
             return (
               <li key={index}>
-                {item}&nbsp;
+                {item.task}&nbsp;
                 <button type="button" onClick={() => this.deleteTodo(index)}>
                   Delete
+                </button>
+                &nbsp;
+                <button type="button" onClick={() => this.completeTodo(index)}>
+                  Complete
                 </button>
               </li>
             );
