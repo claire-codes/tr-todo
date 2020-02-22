@@ -6,6 +6,10 @@ const MainBody = styled.div`
   background-color: #fffae7;
 `;
 
+const TodoItem = styled.li`
+  color: ${props => (props.complete ? "blue" : "green")};
+`;
+
 class App extends React.Component {
   state = {
     todos: [
@@ -36,7 +40,7 @@ class App extends React.Component {
         <ul>
           {this.state.todos.map((item, index) => {
             return (
-              <li key={index}>
+              <TodoItem key={index} complete={item.complete}>
                 {item.task}&nbsp;
                 <button type="button" onClick={() => this.deleteTodo(index)}>
                   Delete
@@ -45,7 +49,7 @@ class App extends React.Component {
                 <button type="button" onClick={() => this.completeTodo(index)}>
                   Complete
                 </button>
-              </li>
+              </TodoItem>
             );
           })}
         </ul>
