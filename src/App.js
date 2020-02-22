@@ -6,12 +6,14 @@ const MainBody = styled.div`
   background-color: #fffae7;
 `;
 
-function App() {
-  return (
-    <MainBody>
-      <h1>To-Do List</h1>
-    </MainBody>
-  );
+class App extends React.Component {
+  render() {
+    return (
+      <MainBody>
+        <h1>To-Do List</h1>
+      </MainBody>
+    );
+  }
 }
 
 export default App;
