@@ -1,12 +1,58 @@
 import React from "react";
 import styled from "styled-components";
 
-const MainBody = styled.div`
-  background-color: #fffae7;
+const AppBody = styled.main`
+  height: 100vh;
+  margin-left: 50px;
+  font-size: 40px;
+  border-left: 2px solid #e7847e;
+  padding-left: 20px;
 `;
 
-const TodoItem = styled.li`
-  color: ${props => (props.complete ? "blue" : "green")};
+const TodoItemText = styled.span`
+  text-decoration: ${props => (props.complete ? "line-through" : "none")};
+  color: ${props => (props.complete ? "#aaa" : "inherit")};
+`;
+
+const Heading = styled.header`
+  border-bottom: 2px solid #7aafff;
+  margin-left: -70px;
+  padding-left: 70px;
+  padding-top: 40px;
+`;
+
+const AppTitle = styled.h1`
+  margin: 0;
+  font-size: 50px;
+`;
+
+const TodoInput = styled.input`
+  font-size: 40px;
+  font-family: "Learning Curve Pro";
+  border: none;
+  border-bottom: 1px solid black;
+  background-color: unset;
+  width: 350px;
+  padding-left: 10px;
+`;
+
+const TodoList = styled.ul`
+  margin: 0;
+`;
+
+const InputContainer = styled.div`
+  margin: 20px 0;
+`;
+
+const Button = styled.button`
+  margin-left: 15px;
+  font-size: 30px;
+  background-color: unset;
+  border-radius: 5px;
+  font-family: "Learning Curve Pro";
+  padding: 3px 15px;
+  box-shadow: 1px 1px 2px #ccc;
+  border-color: #ccc;
 `;
 
 class App extends React.Component {
@@ -48,27 +94,13 @@ class App extends React.Component {
 
   render() {
     return (
-      <MainBody>
-        <h1>Todo List</h1>
-        <ul>
-          {this.state.todos.map((item, index) => {
-            return (
-              <TodoItem key={index} complete={item.complete}>
-                {item.task}&nbsp;
-                <button type="button" onClick={() => this.deleteTodo(index)}>
-                  Delete
-                </button>
-                &nbsp;
-                <button type="button" onClick={() => this.completeTodo(index)}>
-                  Complete
-                </button>
-              </TodoItem>
-            );
-          })}
-        </ul>
-        <div>
+      <AppBody>
+        <Heading>
+          <AppTitle>Todo List</AppTitle>
+        </Heading>
+        <InputContainer>
           <label>Add a new todo item:</label>&nbsp;
-          <input
+          <TodoInput
             type="text"
             value={this.state.todoToAdd}
             onChange={e => {
@@ -76,15 +108,35 @@ class App extends React.Component {
             }}
             onKeyDown={this.addToDoOnEnter}
             placeholder="Type your next todo here"
+            autoFocus
           />
-          <button
+          <Button
             type="button"
             onClick={() => this.addTodo(this.state.todoToAdd)}
           >
             Add
-          </button>
-        </div>
-      </MainBody>
+          </Button>
+        </InputContainer>
+        <TodoList>
+          {this.state.todos.map((item, index) => {
+            return (
+              <li key={index}>
+                <TodoItemText complete={item.complete}>
+                  {item.task}
+                </TodoItemText>
+                &nbsp;
+                <Button type="button" onClick={() => this.deleteTodo(index)}>
+                  Delete
+                </Button>
+                &nbsp;
+                <Button type="button" onClick={() => this.completeTodo(index)}>
+                  Complete
+                </Button>
+              </li>
+            );
+          })}
+        </TodoList>
+      </AppBody>
     );
   }
 }
