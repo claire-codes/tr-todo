@@ -11,11 +11,7 @@ const TodoItem = styled.li`
 
 class App extends React.Component {
   state = {
-    todos: [
-      { task: "alpha", complete: false },
-      { task: "beta", complete: false },
-      { task: "gamma", complete: false }
-    ],
+    todos: [{ task: "get into garden", complete: false }],
     todoToAdd: ""
   };
 
@@ -44,7 +40,7 @@ class App extends React.Component {
   render() {
     return (
       <MainBody>
-        <h1>To-Do List</h1>
+        <h1>Todo List</h1>
         <ul>
           {this.state.todos.map((item, index) => {
             return (
@@ -62,13 +58,14 @@ class App extends React.Component {
           })}
         </ul>
         <div>
-          <label>Add a new to-do item:</label>
+          <label>Add a new todo item:</label>&nbsp;
           <input
             type="text"
             value={this.state.todoToAdd}
             onChange={e => {
               this.setState({ todoToAdd: e.target.value });
             }}
+            placeholder="Type your next todo here"
           />
           <button
             type="button"
