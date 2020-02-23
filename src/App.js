@@ -60,7 +60,7 @@ class App extends React.Component {
         </Heading>
 
         <InputContainer>
-          <label for="todoInput">Add a new todo item:</label>&nbsp;
+          <label htmlFor="todoInput">Add a new todo item:</label>&nbsp;
           <TodoInput
             type="text"
             id="todoInput"
