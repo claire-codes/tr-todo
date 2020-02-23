@@ -30,11 +30,20 @@ class App extends React.Component {
   };
 
   addTodo = todo => {
-    if (todo === "") return;
-    this.setState({
-      todos: [...this.state.todos, { task: todo, complete: false }]
-    });
-    this.setState({ todoToAdd: "" });
+    if (todo === "") {
+      return;
+    } else {
+      this.setState({
+        todos: [...this.state.todos, { task: todo, complete: false }]
+      });
+      this.setState({ todoToAdd: "" });
+    }
+  };
+
+  addToDoOnEnter = event => {
+    if (event.keyCode === 13) {
+      this.addTodo(this.state.todoToAdd);
+    }
   };
 
   render() {
@@ -65,6 +74,7 @@ class App extends React.Component {
             onChange={e => {
               this.setState({ todoToAdd: e.target.value });
             }}
+            onKeyDown={this.addToDoOnEnter}
             placeholder="Type your next todo here"
           />
           <button
