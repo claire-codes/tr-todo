@@ -65,17 +65,17 @@ class App extends React.Component {
   };
 
   deleteTodo = index => {
-    let newTodos = [...this.state.todos];
-    newTodos.splice(index, 1);
-    this.setState({ todos: newTodos });
+    let newTodoList = [...this.state.todos];
+    newTodoList.splice(index, 1);
+    this.setState({ todos: newTodoList });
   };
 
   completeTodo = index => {
-    let newTodos = [...this.state.todos];
+    let newTodoList = [...this.state.todos];
     let newTodo = this.state.todos[index];
     newTodo.complete = !newTodo.complete;
-    newTodos[index] = newTodo;
-    this.setState({ todos: newTodos });
+    newTodoList[index] = newTodo;
+    this.setState({ todos: newTodoList });
   };
 
   addTodo = todo => {
@@ -90,6 +90,7 @@ class App extends React.Component {
   };
 
   addToDoOnEnter = event => {
+    // keycode for enter or return key is 13
     if (event.keyCode === 13) {
       this.addTodo(this.state.todoToAdd);
     }
