@@ -11,19 +11,27 @@ import {
   Button
 } from "./component-styles.js";
 
+const initialTodos = [
+  { task: "get into the garden", complete: false },
+  { task: "steal the groundskeeper's keys", complete: false }
+];
+
 class App extends React.Component {
   state = {
-    todos: [
-      { task: "get into the garden", complete: false },
-      { task: "steal the groundskeeper's keys", complete: false }
-    ],
+    todos: [],
     todoToAdd: ""
   };
+
+  componentDidMount() {
+    let todoList = JSON.parse(localStorage.getItem("todos")) || initialTodos;
+    this.setState({ todos: todoList });
+  }
 
   deleteTodo = index => {
     let newTodoList = [...this.state.todos];
     newTodoList.splice(index, 1);
     this.setState({ todos: newTodoList });
+    localStorage.setItem("todos", JSON.stringify(newTodoList));
   };
 
   completeTodo = index => {
@@ -32,6 +40,7 @@ class App extends React.Component {
     newTodo.complete = !newTodo.complete;
     newTodoList[index] = newTodo;
     this.setState({ todos: newTodoList });
+    localStorage.setItem("todos", JSON.stringify(newTodoList));
   };
 
   addTodo = todo => {
@@ -41,6 +50,10 @@ class App extends React.Component {
       this.setState({
         todos: [...this.state.todos, { task: todo, complete: false }]
       });
+      localStorage.setItem(
+        "todos",
+        JSON.stringify([...this.state.todos, { task: todo, complete: false }])
+      );
       this.setState({ todoToAdd: "" });
     }
   };
