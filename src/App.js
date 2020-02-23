@@ -57,7 +57,10 @@ const Button = styled.button`
 
 class App extends React.Component {
   state = {
-    todos: [{ task: "get into garden", complete: false }],
+    todos: [
+      { task: "get into the garden", complete: false },
+      { task: "steal the groundskeeper's keys", complete: false }
+    ],
     todoToAdd: ""
   };
 
@@ -98,25 +101,28 @@ class App extends React.Component {
         <Heading>
           <AppTitle>Todo List</AppTitle>
         </Heading>
+
         <InputContainer>
-          <label>Add a new todo item:</label>&nbsp;
+          <label for="todoInput">Add a new todo item:</label>&nbsp;
           <TodoInput
             type="text"
+            id="todoInput"
             value={this.state.todoToAdd}
             onChange={e => {
               this.setState({ todoToAdd: e.target.value });
             }}
             onKeyDown={this.addToDoOnEnter}
-            placeholder="Type your next todo here"
+            placeholder="Type your todo here"
             autoFocus
           />
           <Button
             type="button"
             onClick={() => this.addTodo(this.state.todoToAdd)}
           >
-            Add
+            Add item
           </Button>
         </InputContainer>
+
         <TodoList>
           {this.state.todos.map((item, index) => {
             return (
@@ -126,11 +132,11 @@ class App extends React.Component {
                 </TodoItemText>
                 &nbsp;
                 <Button type="button" onClick={() => this.deleteTodo(index)}>
-                  Delete
+                  Delete item
                 </Button>
                 &nbsp;
                 <Button type="button" onClick={() => this.completeTodo(index)}>
-                  Complete
+                  Complete item
                 </Button>
               </li>
             );
