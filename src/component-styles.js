@@ -43,22 +43,6 @@ const InputContainer = styled.div`
   margin: 20px 0;
 `;
 
-const StyledButton = styled.button`
-  margin-left: 15px;
-  font-size: 30px;
-  background-color: unset;
-  border-radius: 5px;
-  font-family: "Learning Curve Pro";
-  padding: 3px 15px;
-  box-shadow: 1px 1px 2px #ccc;
-  border-color: #ccc;
-
-  &:hover {
-    cursor: pointer;
-    box-shadow: 2px 2px 3px #444242;
-  }
-`;
-
 export {
   AppBody,
   TodoItemText,
@@ -66,6 +50,5 @@ export {
   AppTitle,
   TodoInput,
   TodoList,
-  InputContainer,
-  StyledButton
+  InputContainer
 };
