@@ -1,5 +1,7 @@
 import React from "react";
 
+import Button from "./components/Button.js";
+
 import {
   AppBody,
   TodoItemText,
@@ -7,8 +9,7 @@ import {
   AppTitle,
   TodoInput,
   TodoList,
-  InputContainer,
-  Button
+  InputContainer
 } from "./component-styles.js";
 
 const initialTodos = [
@@ -86,11 +87,9 @@ class App extends React.Component {
             autoFocus
           />
           <Button
-            type="button"
-            onClick={() => this.addTodo(this.state.todoToAdd)}
-          >
-            Add item
-          </Button>
+            buttonText="Add item"
+            clickEvent={() => this.addTodo(this.state.todoToAdd)}
+          />
         </InputContainer>
 
         <TodoList>
@@ -101,13 +100,15 @@ class App extends React.Component {
                   {item.task}
                 </TodoItemText>
                 &nbsp;
-                <Button type="button" onClick={() => this.deleteTodo(index)}>
-                  Delete item
-                </Button>
+                <Button
+                  buttonText="Delete item"
+                  clickEvent={() => this.deleteTodo(index)}
+                />
                 &nbsp;
-                <Button type="button" onClick={() => this.completeTodo(index)}>
-                  Complete item
-                </Button>
+                <Button
+                  buttonText="Complete item"
+                  clickEvent={() => this.completeTodo(index)}
+                />
               </li>
             );
           })}

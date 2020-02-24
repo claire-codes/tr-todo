@@ -43,7 +43,7 @@ const InputContainer = styled.div`
   margin: 20px 0;
 `;
 
-const Button = styled.button`
+const StyledButton = styled.button`
   margin-left: 15px;
   font-size: 30px;
   background-color: unset;
@@ -62,5 +62,5 @@ export {
   TodoInput,
   TodoList,
   InputContainer,
-  Button
+  StyledButton
 };
