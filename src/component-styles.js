@@ -31,8 +31,12 @@ const TodoInput = styled.input`
   border: none;
   border-bottom: 1px solid black;
   background-color: unset;
-  width: 350px;
+  width: 90%;
   padding-left: 10px;
+
+  @media (min-width: 550px) {
+    width: 350px;
+  }
 `;
 
 const TodoList = styled.ul`

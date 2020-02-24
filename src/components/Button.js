@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 const StyledButton = styled.button`
-  margin-left: 15px;
+  margin-left: 0;
   font-size: 30px;
   background-color: unset;
   border-radius: 5px;
@@ -10,6 +10,10 @@ const StyledButton = styled.button`
   padding: 3px 15px;
   box-shadow: 1px 1px 2px #ccc;
   border-color: #ccc;
+
+  @media (min-width: 550px) {
+    margin-left: 15px;
+  }
 
   &:hover {
     cursor: pointer;
