@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 
+import media from "./../media.js";
+
 const StyledButton = styled.button`
   margin-left: 0;
   font-size: 30px;
@@ -11,7 +13,7 @@ const StyledButton = styled.button`
   box-shadow: 1px 1px 2px #ccc;
   border-color: #ccc;
 
-  @media (min-width: 550px) {
+  @media (min-width: ${media.mobileBreakpoint}) {
     margin-left: 15px;
   }
 

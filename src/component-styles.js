@@ -1,5 +1,7 @@
 import styled from "styled-components";
 
+import media from "./media.js";
+
 const AppBody = styled.main`
   height: 100vh;
   margin-left: 50px;
@@ -34,7 +36,7 @@ const TodoInput = styled.input`
   width: 90%;
   padding-left: 10px;
 
-  @media (min-width: 550px) {
+  @media (min-width: ${media.mobileBreakpoint}) {
     width: 350px;
   }
 `;
